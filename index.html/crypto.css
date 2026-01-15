@@ -1224,49 +1224,6 @@ html, body {
     opacity: 1;
 }
 
-/* =====================================================
-   FINAL FIX — Order Summary & Confirmation (Mobile Safe)
-   ===================================================== */
-
-/* Base summary row */
-.summary-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  flex-wrap: nowrap;
-}
-
-/* Image never shrinks */
-.summary-item-img {
-  flex-shrink: 0;
-}
-
-/* Text container MUST be allowed to shrink */
-.summary-item-info {
-  flex: 1;
-  min-width: 0; /* 🔑 critical for iOS/Android */
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-/* Long item names */
-.summary-item-info *,
-.summary-item-name {
-  word-break: break-word;
-  overflow-wrap: anywhere;
-  white-space: normal;
-  line-height: 1.4;
-}
-
-/* Buttons container (+ − ❌) */
-.summary-item-controls,
-.summary-item > div:nth-child(2) {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  flex-shrink: 0;
-}
 
 /* Prevent buttons sitting on image */
 .summary-item button {
@@ -1332,16 +1289,7 @@ html, body {
   min-width: 0;
 }
 
-/* Quantity + remove buttons move to their own column */
-.summary-item-controls,
-.summary-item > div:nth-child(2) {
-  display: flex;
-  flex-direction: column; /* ⬅ prevents overlap */
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  margin-left: 6px;
-}
+
 
 /* Buttons never sit on image */
 .summary-item button {
@@ -1361,77 +1309,8 @@ html, body {
 }
 
 /* ================================
-   FORCE buttons under item name
-   (NO HTML / JS change)
-================================ */
-
-/* Make summary item a grid */
-.summary-item {
-  display: grid;
-  grid-template-columns: 70px 1fr;
-  column-gap: 15px;
-  align-items: start;
-}
-
-/* Image stays left */
-.summary-item-img {
-  grid-row: span 2;
-}
-
-/* Item info stacks */
-.summary-item-info {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-}
-
-/* Target ALL buttons + qty */
-.summary-item button,
-.summary-item strong {
-  grid-column: 2;
-}
-
-/* Wrap buttons visually */
-.summary-item button,
-.summary-item strong {
-  display: inline-flex;
-  margin-right: 6px;
-}
-
-/* Create horizontal button row */
-.summary-item button:nth-of-type(1),
-.summary-item strong,
-.summary-item button:nth-of-type(2),
-.summary-item button:nth-of-type(3) {
-  margin-top: 6px;
-}
-
-/* Button container illusion */
-.summary-item button:nth-of-type(1),
-.summary-item strong,
-.summary-item button:nth-of-type(2),
-.summary-item button:nth-of-type(3) {
-  float: left;
-}
-
-/* Clear float after buttons */
-.summary-item::after {
-  content: "";
-  display: block;
-  clear: both;
-}
-
-/* Mobile safety */
-@media (max-width: 480px) {
-  .summary-item {
-    grid-template-columns: 60px 1fr;
-  }
-}
-
-/* =========================================
-   FINAL ORDER SUMMARY LAYOUT FIX (GRID)
-   NO HTML / NO JS CHANGE
-========================================= */
+   FINAL ORDER SUMMARY GRID LAYOUT
+   ================================ */
 
 .summary-item {
   display: grid;
@@ -1442,81 +1321,52 @@ html, body {
   align-items: start;
 }
 
-/* IMAGE */
+/* Image */
 .summary-item-img {
   grid-column: 1;
   grid-row: 1 / span 3;
 }
 
-/* NAME */
+/* Name */
 .summary-item-name {
   grid-column: 2;
   grid-row: 1;
-  white-space: normal;
-  word-break: break-word;
-  line-height: 1.35;
 }
 
-/* PRICE */
+/* Buttons row (horizontal) */
+.summary-item button,
+.summary-item strong {
+  grid-column: 2;
+  grid-row: 2;
+  display: inline-flex;
+  margin-right: 8px;
+}
+
+/* Price */
 .summary-item span:last-child {
   grid-column: 2;
   grid-row: 3;
-  font-size: 14px;
   white-space: nowrap;
 }
 
-/* BUTTONS ROW (FORCE HORIZONTAL) */
-.summary-item button,
-.summary-item strong {
-  grid-row: 2;
-}
-
-/* − */
-.summary-item button:nth-of-type(1) {
-  grid-column: 2;
-}
-
-/* QTY */
-.summary-item strong {
-  grid-column: 2;
-  margin-left: 36px;
-}
-
-/* + */
-.summary-item button:nth-of-type(2) {
-  grid-column: 2;
-  margin-left: 70px;
-}
-
-/* × */
-.summary-item button:nth-of-type(3) {
-  grid-column: 2;
-  margin-left: 110px;
-}
-
-/* Buttons sizing */
-.summary-item button {
-  width: 28px;
-  height: 28px;
-  padding: 0;
-  font-size: 14px;
-}
-
-/* Mobile refinement */
 @media (max-width: 480px) {
   .summary-item {
     grid-template-columns: 60px 1fr;
   }
+}
 
-  .summary-item strong {
-    margin-left: 34px;
-  }
+/* Long item names */
+.summary-item-name,
+.summary-item-info * {
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
 
-  .summary-item button:nth-of-type(2) {
-    margin-left: 64px;
-  }
-
-  .summary-item button:nth-of-type(3) {
-    margin-left: 100px;
-  }
+/* Image size */
+.summary-item-img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
 }
