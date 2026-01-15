@@ -1360,43 +1360,70 @@ html, body {
   }
 }
 
-/* =========================================
-   Order Summary: Buttons UNDER item name
-   ========================================= */
+/* ================================
+   FORCE buttons under item name
+   (NO HTML / JS change)
+================================ */
 
-/* Allow item info to stack */
+/* Make summary item a grid */
+.summary-item {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  column-gap: 15px;
+  align-items: start;
+}
+
+/* Image stays left */
+.summary-item-img {
+  grid-row: span 2;
+}
+
+/* Item info stacks */
 .summary-item-info {
   display: flex;
   flex-direction: column;
-  gap: 6px;
   min-width: 0;
 }
 
-/* Button row under item name */
-.summary-item-controls {
-  display: flex;
-  flex-direction: row; /* ⬅ horizontal */
-  gap: 8px;
+/* Target ALL buttons + qty */
+.summary-item button,
+.summary-item strong {
+  grid-column: 2;
+}
+
+/* Wrap buttons visually */
+.summary-item button,
+.summary-item strong {
+  display: inline-flex;
+  margin-right: 6px;
+}
+
+/* Create horizontal button row */
+.summary-item button:nth-of-type(1),
+.summary-item strong,
+.summary-item button:nth-of-type(2),
+.summary-item button:nth-of-type(3) {
   margin-top: 6px;
 }
 
-/* Keep buttons compact */
-.summary-item-controls button {
-  width: 32px;
-  height: 32px;
-  font-size: 16px;
-  border-radius: 6px;
+/* Button container illusion */
+.summary-item button:nth-of-type(1),
+.summary-item strong,
+.summary-item button:nth-of-type(2),
+.summary-item button:nth-of-type(3) {
+  float: left;
 }
 
-/* Mobile fine-tuning */
-@media (max-width: 480px) {
-  .summary-item-controls {
-    gap: 6px;
-  }
+/* Clear float after buttons */
+.summary-item::after {
+  content: "";
+  display: block;
+  clear: both;
+}
 
-  .summary-item-controls button {
-    width: 30px;
-    height: 30px;
-    font-size: 15px;
+/* Mobile safety */
+@media (max-width: 480px) {
+  .summary-item {
+    grid-template-columns: 60px 1fr;
   }
 }
