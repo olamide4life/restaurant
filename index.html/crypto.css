@@ -1308,6 +1308,181 @@ html, body {
   }
 }
 
+/* =====================================================
+   FINAL FIX — Order Summary & Confirmation (Mobile Safe)
+   ===================================================== */
+
+/* Base summary row */
+
+
+/* Image never shrinks */
+.summary-item-img {
+  flex-shrink: 0;
+}
+
+/* Text container MUST be allowed to shrink */
+.summary-item-info {
+  flex: 1;
+  min-width: 0; /* 🔑 critical for iOS/Android */
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Long item names */
+.summary-item-info *,
+.summary-item-name {
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  white-space: normal;
+  line-height: 1.4;
+}
+
+
+
+/* Prevent buttons sitting on image */
+.summary-item button {
+  position: relative;
+  z-index: 1;
+}
+
+/* Price never breaks */
+.summary-item span:last-child {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ==========================
+   Confirmation page inherits fix
+   ========================== */
+.confirmation-container .summary-item {
+  align-items: flex-start;
+}
+
+.confirmation-container .summary-item-info {
+  min-width: 0;
+}
+
+/* ==========================
+   Extra-tight mobile safety
+   ========================== */
+@media (max-width: 480px) {
+  .summary-item {
+    gap: 8px;
+  }
+
+  .summary-item-info {
+    font-size: 0.95rem;
+  }
+}
+
+/* =====================================================
+   FINAL ALIGNMENT FIX — Image + Qty buttons
+   ===================================================== */
+
+/* Ensure summary item NEVER overflows card */
+.summary-item {
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden; /* keeps image inside black card */
+}
+
+/* Image stays fully inside */
+.summary-item-img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  flex-shrink: 0;
+  border-radius: 8px;
+}
+
+/* Text area stays centered */
+.summary-item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Quantity + remove buttons move to their own column */
+
+
+/* Buttons never sit on image */
+.summary-item button {
+  pointer-events: auto;
+  touch-action: manipulation;
+}
+
+/* Mobile tightening */
+@media (max-width: 480px) {
+  .summary-item {
+    gap: 10px;
+  }
+
+  .summary-item-controls {
+    margin-left: 4px;
+  }
+}
+
+/* ================================
+   FORCE buttons under item name
+   (NO HTML / JS change)
+   ================================ */
+
+/* Make summary item a grid */
+.summary-item {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  column-gap: 15px;
+  align-items: start;
+}
+
+/* Image stays left */
+.summary-item-img {
+  grid-row: span 2;
+}
+
+/* Item info stacks */
+.summary-item-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* Target ALL buttons + qty */
+.summary-item button,
+.summary-item strong {
+  grid-column: 2;
+}
+
+/* Wrap buttons visually */
+.summary-item button,
+.summary-item strong {
+  display: inline-flex;
+  margin-right: 6px;
+}
+
+/* Create horizontal button row */
+.summary-item button:nth-of-type(1),
+.summary-item strong,
+.summary-item button:nth-of-type(2),
+.summary-item button:nth-of-type(3) {
+  margin-top: 6px;
+}
+
+
+/* Clear float after buttons */
+.summary-item::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/* Mobile safety */
+@media (max-width: 480px) {
+  .summary-item {
+    grid-template-columns: 60px 1fr;
+  }
+}
+
 /* ================================
    FINAL ORDER SUMMARY GRID LAYOUT
    ================================ */
@@ -1353,20 +1528,4 @@ html, body {
   .summary-item {
     grid-template-columns: 60px 1fr;
   }
-}
-
-/* Long item names */
-.summary-item-name,
-.summary-item-info * {
-  word-break: break-word;
-  overflow-wrap: anywhere;
-  white-space: normal;
-}
-
-/* Image size */
-.summary-item-img {
-  width: 60px;
-  height: 60px;
-  object-fit: cover;
-  border-radius: 8px;
 }
