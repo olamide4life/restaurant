@@ -492,3 +492,31 @@ function animateScreen(el) {
     });
 }
 
+// LAYOUT IMAGE
+
+const viewer = document.getElementById("templateViewer");
+const viewerImg = document.getElementById("viewerImage");
+const backBtn = document.getElementById("viewerBack");
+
+document.querySelectorAll(".menu-template").forEach(img => {
+  img.addEventListener("click", () => {
+    viewerImg.src = img.src;
+    viewer.classList.add("active");
+    document.body.style.overflow = "hidden"; // stop background scroll
+  });
+});
+
+backBtn.addEventListener("click", closeViewer);
+
+// Tap black background to close
+viewer.addEventListener("click", e => {
+  if (e.target === viewer) closeViewer();
+});
+
+function closeViewer() {
+  viewer.classList.remove("active");
+  viewerImg.src = "";
+  document.body.style.overflow = "";
+}
+
+
