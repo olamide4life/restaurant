@@ -1529,3 +1529,74 @@ html, body {
     grid-template-columns: 60px 1fr;
   }
 }
+
+/* Grid layout */
+.menu-templates {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+.menu-template {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  cursor: pointer;
+  display: block;
+}
+
+/* First image bigger */
+.template-big {
+  grid-column: span 3;
+  aspect-ratio: 16 / 9;
+}
+
+/* Fullscreen viewer */
+.template-viewer {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.template-viewer.active {
+  display: flex;
+}
+
+/* Preview image */
+.template-viewer img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* Instagram-style back arrow */
+.viewer-back {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  font-size: 26px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10000;
+}
+
+/* Mobile fine-tune */
+@media (max-width: 480px) {
+  .viewer-back {
+    top: 14px;
+    left: 12px;
+  }
+}
+
