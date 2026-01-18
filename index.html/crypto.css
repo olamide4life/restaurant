@@ -1600,3 +1600,34 @@ html, body {
   }
 }
 
+/* =========================
+   Instagram Slide-Up Effect
+========================= */
+
+/* Start hidden at bottom */
+.template-viewer {
+  opacity: 0;
+  transform: translateY(100%);
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+/* Slide UP when active */
+.template-viewer.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Image slight zoom like Instagram */
+.template-viewer img {
+  animation: zoomIn 0.35s ease;
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.96);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
