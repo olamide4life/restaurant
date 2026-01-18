@@ -515,8 +515,13 @@ viewer.addEventListener("click", e => {
 
 function closeViewer() {
   viewer.classList.remove("active");
-  viewerImg.src = "";
-  document.body.style.overflow = "";
+
+  // wait for animation before clearing
+  setTimeout(() => {
+    viewerImg.src = "";
+    document.body.style.overflow = "";
+  }, 350);
 }
+
 
 
