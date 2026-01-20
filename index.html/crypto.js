@@ -63,6 +63,10 @@ function showMenu() {
     document.getElementById('hero').style.display = 'none';
     animateScreen(document.getElementById('menu'));
     document.getElementById('lookupSection').style.display = 'block';
+
+    // ✅ SHOW GALLERY SAFELY
+    document.getElementById('gallerySection').style.display = 'block';
+
     renderMenu();
     showMenuPopup();
     scrollToTopSafe();
@@ -491,21 +495,24 @@ function animateScreen(el) {
         localStorage.setItem("currentSection", el.id);
     });
 }
+    // LAYOUT IMAGE
 
-// LAYOUT IMAGE
 
+// ===== GALLERY VIEWER (Instagram-style) =====
 const viewer = document.getElementById("templateViewer");
 const viewerImg = document.getElementById("viewerImage");
 const backBtn = document.getElementById("viewerBack");
 
+// Open viewer
 document.querySelectorAll(".menu-template").forEach(img => {
   img.addEventListener("click", () => {
     viewerImg.src = img.src;
     viewer.classList.add("active");
-    document.body.style.overflow = "hidden"; // stop background scroll
+    document.body.style.overflow = "hidden"; // lock background scroll
   });
 });
 
+// Back arrow close
 backBtn.addEventListener("click", closeViewer);
 
 // Tap black background to close
@@ -516,12 +523,9 @@ viewer.addEventListener("click", e => {
 function closeViewer() {
   viewer.classList.remove("active");
 
-  // wait for animation before clearing
+  // wait for slide-down animation
   setTimeout(() => {
     viewerImg.src = "";
     document.body.style.overflow = "";
   }, 350);
 }
-
-
-
