@@ -35,7 +35,41 @@ const menuData = {
             {id: 'yoghurt parfait3', name: "550ML", description: "", image: "https://images.unsplash.com/photo-1505252585461-04db1eb84625?w=400&h=300&fit=crop", price: 3500},
             {id: 'yoghurt parfait4', name: "1 Liter Bowl", description: "", image: "https://images.unsplash.com/photo-1505252585461-04db1eb84625?w=400&h=300&fit=crop", price: 3800},
         ]
-    } 
+    },
+
+       sawllow: {
+        name: "SAWLLOW",
+        items: [
+            {id: 'Amala Dudu', name: "Amala Dudu", description: "", image: "https://images.unsplash.com/photo-1505252585461-04db1eb84625?w=400&h=300&fit=crop", price: 500},
+            {id: 'Semovita', name: "Semovita", description: "", image: "https://images.unsplash.com/photo-1505252585461-04db1eb84625?w=400&h=300&fit=crop", price: 700},
+            {id: 'Poundo Yam', name: "Poundo Yam", description: "", image: "https://images.unsplash.com/photo-1505252585461-04db1eb84625?w=400&h=300&fit=crop", price: 1000},
+            {id: 'Eba Yellow', name: "Eba Yellow", description: "", image: "https://images.unsplash.com/photo-1505252585461-04db1eb84625?w=400&h=300&fit=crop", price: 700},
+        ]
+    }, 
+
+     soup: {
+        name: "SOUP",
+        items: [
+            {id: 'Eforiro', name: "Eforiro", description: "", image: "https://images.unsplash.com/photo-1505252585461-04db1eb84625?w=400&h=300&fit=crop", price: 200},
+            {id: 'Egusi', name: "Egusi", description: "", image: "https://images.unsplash.com/photo-1505252585461-04db1eb84625?w=400&h=300&fit=crop", price: 200},
+            {id: 'Ogbono ', name: "Ogbono", description: "", image: "https://images.unsplash.com/photo-1505252585461-04db1eb84625?w=400&h=300&fit=crop", price: 200},
+            {id: 'Oha Soup', name: "Oha Soup", description: "", image: "https://images.unsplash.com/photo-1505252585461-04db1eb84625?w=400&h=300&fit=crop", price: 200},
+            {id: 'Ewedu', name: "Ewedu", description: "", image: "https://images.unsplash.com/photo-1505252585461-04db1eb84625?w=400&h=300&fit=crop", price: 200},
+        ]
+    }, 
+
+    protein: {
+        name: "PROTEIN",
+        items: [
+            {id: 'Turkey', name: "Turkey", description: "", image: "https://images.unsplash.com/photo-1505252585461-04db1eb84625?w=400&h=300&fit=crop", price: 1500},
+            {id: 'Titus Fish', name: "Titus Fish", description: "", image: "https://images.unsplash.com/photo-1505252585461-04db1eb84625?w=400&h=300&fit=crop", price: 1200},
+            {id: 'Chicken', name: "Chicken", description: "", image: "https://images.unsplash.com/photo-1505252585461-04db1eb84625?w=400&h=300&fit=crop", price: 1000},
+            {id: 'Beef Meat', name: "Beef Meat", description: "", image: "https://images.unsplash.com/photo-1505252585461-04db1eb84625?w=400&h=300&fit=crop", price: 500},
+            {id: 'Goat Meat', name: "Goat Meat", description: "", image: "https://images.unsplash.com/photo-1505252585461-04db1eb84625?w=400&h=300&fit=crop", price: 600},
+            {id: 'Ponmo', name: "Ponmo", description: "", image: "https://images.unsplash.com/photo-1505252585461-04db1eb84625?w=400&h=300&fit=crop", price: 400},
+             {id: 'Panla Fish', name: "Panla fish", description: "", image: "https://images.unsplash.com/photo-1505252585461-04db1eb84625?w=400&h=300&fit=crop", price: 800},
+        ]
+    }, 
 };
 
 let orderLocked = false;
@@ -529,3 +563,4 @@ function closeViewer() {
     document.body.style.overflow = "";
   }, 350);
 }
+
